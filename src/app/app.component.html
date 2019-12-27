@@ -1,0 +1,29 @@
+<div class="containeer">
+  <!-- Search by Title here -->
+  <div class="Search">
+      <input [(ngModel)]="list" placeholder="Search by Title here">
+  </div>
+<!-- Displaying the table -->
+<p-table [value]="data | transfer : list">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Title</th>
+          <th>Url</th>
+          <th>Created_at</th>
+          <th>Author</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-x>
+      <tr (click) = "row(x)">
+          <td>{{x.title}}</td>
+          <td class="wordBreak">{{x.url}}</td>
+          <td>{{x.created_at}}</td>
+          <td>{{x.author}}</td>
+      </tr>
+  </ng-template>
+</p-table>
+</div>
+<!-- Modal code here -->
+<p-dialog header="Title" [(visible)]="display" [style]="{width: '650px'}" modal="true" [dismissableMask]="true">
+                      {{data1 | json}}
+</p-dialog>
